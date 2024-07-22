@@ -1,3 +1,5 @@
 package com.veterinaryClinic.models;
 
-public class Patient {}
+public class Patient {
+
+}
