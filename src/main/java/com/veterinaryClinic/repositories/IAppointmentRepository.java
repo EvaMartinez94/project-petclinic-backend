@@ -1,3 +1,6 @@
 package com.veterinaryClinic.repositories;
 
-public interface IAppointmentRepository {}
+import com.veterinaryClinic.models.Appointment;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface IAppointmentRepository extends JpaRepository<Appointment, Integer> {}
