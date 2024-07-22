@@ -15,10 +15,16 @@ public class AppointmentControllers {
     @Autowired
     AppointmentServices AppointmentServices;
 
-    @PostMapping(path = "/appointment")
-    public Appointment createAppointment (@RequestBody Appointment newAppointment){
-        return AppointmentServices.createAppointment(newAppointment);
+    @GetMapping(path = "/appointment")
+    public ArrayList<Appointment> getAllAppointment() {
+        return AppointmentServices.getAllAppointment();
     }
+
+    @GetMapping(path = "/appointment/{id}")
+    public Optional<Appointment> getAppointmentId(@PathVariable int id){
+        return AppointmentServices.getAppointmentId(id);
+    }
+
 
 
 }

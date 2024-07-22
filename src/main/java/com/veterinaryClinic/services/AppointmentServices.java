@@ -11,7 +11,14 @@ public class AppointmentServices {
     @Autowired
     IAppointmentRepository iAppointmentRepository;
 
-    public Appointment createAppointment (Appointment newAppointment){
-        return iAppointmentRepository.save(newAppointment);
+    public ArrayList<Appointment> getAllAppointment(){
+        return (ArrayList<Appointment>) iAppointmentRepository.findAll();
     }
+
+    public Optional<Appointment> getAppointmentId(int id){
+        Appointment appointment = iAppointmentRepository.findById(id).orElseThrow();
+        return Optional.of(appointment);
+    }
+
+
 }
