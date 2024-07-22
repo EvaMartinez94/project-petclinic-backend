@@ -14,4 +14,11 @@ import java.util.Optional;
 public class AppointmentControllers {
     @Autowired
     AppointmentServices AppointmentServices;
+
+    @PostMapping(path = "/appointment")
+    public Appointment createAppointment (@RequestBody Appointment newAppointment){
+        return AppointmentServices.createAppointment(newAppointment);
+    }
+
+
 }

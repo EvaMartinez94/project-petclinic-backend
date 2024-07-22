@@ -10,4 +10,8 @@ import java.util.Optional;
 public class AppointmentServices {
     @Autowired
     IAppointmentRepository iAppointmentRepository;
+
+    public Appointment createAppointment (Appointment newAppointment){
+        return iAppointmentRepository.save(newAppointment);
+    }
 }
