@@ -12,7 +12,7 @@ public class AppointmentControllers {
     @Autowired
     AppointmentServices appointmentServices;
 
-    @DeleteMapping(path = "appointment/{id}")
+    @DeleteMapping(path = "/appointment/{id}")
     public void deleteAppointment(@PathVariable Integer id){
         appointmentServices.deleteAppointment(id);
     }
