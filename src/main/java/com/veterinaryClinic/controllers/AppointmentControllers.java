@@ -13,7 +13,7 @@ public class AppointmentControllers {
     @Autowired
     AppointmentServices appointmentServices;
 
-    @PutMapping(path = "appointment/{id}")
+    @PutMapping(path = "/appointment/{id}")
     public void updateAppointment(@RequestBody Appointment appointment, @PathVariable Integer id){
         appointmentServices.updateAppointment(appointment, id);
     }
