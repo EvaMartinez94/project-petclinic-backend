@@ -5,6 +5,8 @@ import com.veterinaryClinic.repositories.IAppointmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Optional;
 @Service
@@ -12,6 +14,7 @@ import java.util.Optional;
 public class AppointmentServices {
     @Autowired
     IAppointmentRepository iAppointmentRepository;
+
 
     public ArrayList<Appointment> getAllAppointment(){
         return (ArrayList<Appointment>) iAppointmentRepository.findAll();
@@ -21,6 +24,5 @@ public class AppointmentServices {
         Appointment appointment = iAppointmentRepository.findById(id).orElseThrow();
         return Optional.of(appointment);
     }
-
 
 }

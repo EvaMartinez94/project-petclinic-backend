@@ -13,18 +13,15 @@ import java.util.Optional;
 @CrossOrigin(origins = "*")
 public class AppointmentControllers {
     @Autowired
-    AppointmentServices AppointmentServices;
+    AppointmentServices appointmentServices;
 
     @GetMapping(path = "/appointment")
     public ArrayList<Appointment> getAllAppointment() {
-        return AppointmentServices.getAllAppointment();
+        return appointmentServices.getAllAppointment();
     }
 
     @GetMapping(path = "/appointment/{id}")
     public Optional<Appointment> getAppointmentId(@PathVariable int id){
-        return AppointmentServices.getAppointmentId(id);
+        return appointmentServices.getAppointmentId(id);
     }
-
-
-
 }
