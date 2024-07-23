@@ -5,13 +5,16 @@ import com.veterinaryClinic.services.AppointmentServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Optional;
-
 @RestController
 @RequestMapping("/api/vc")
 @CrossOrigin(origins = "*")
 public class AppointmentControllers {
+
     @Autowired
-    AppointmentServices AppointmentServices;
+    AppointmentServices appointmentServices;
+
+    @PutMapping(path = "/appointment/{id}")
+    public void updateAppointment(@RequestBody Appointment appointment, @PathVariable Integer id){
+        appointmentServices.updateAppointment(appointment, id);
+    }
 }
