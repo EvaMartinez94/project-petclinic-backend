@@ -8,7 +8,7 @@ import com.veterinaryClinic.repositories.IPatientRepository;
 public class PatientServices {
 
 
-
+@Service
 //CREATE
      @Autowired IPatientRepository iPatientRepository;
 
