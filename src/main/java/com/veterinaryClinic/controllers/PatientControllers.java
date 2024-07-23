@@ -13,10 +13,9 @@ import com.veterinaryClinic.services.PatientServices;
 
 
 @RestController
-@RequestMapping("/vc/patient")
+@RequestMapping("/api/vc/")
 public class PatientControllers {
     
-
     @Autowired
     private PatientServices patientService;
 
