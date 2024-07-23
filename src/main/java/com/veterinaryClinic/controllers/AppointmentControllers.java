@@ -17,4 +17,9 @@ public class AppointmentControllers {
     public void updateAppointment(@RequestBody Appointment appointment, @PathVariable Integer id){
         appointmentServices.updateAppointment(appointment, id);
     }
+
+    @DeleteMapping(path = "/appointment/{id}")
+    public void deleteAppointment(@PathVariable Integer id){
+        appointmentServices.deleteAppointment(id);
+    }
 }

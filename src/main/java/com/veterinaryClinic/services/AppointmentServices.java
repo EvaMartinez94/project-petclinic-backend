@@ -15,4 +15,8 @@ public class AppointmentServices {
         appointment.setId(id);
         iAppointmentRepository.save(appointment);
     }
+
+    public void deleteAppointment(Integer id){
+        iAppointmentRepository.deleteById(id);
+    }
 }
