@@ -13,11 +13,11 @@ import java.util.Optional;
 @CrossOrigin(origins = "*")
 public class AppointmentControllers {
     @Autowired
-    AppointmentServices AppointmentServices;
+    AppointmentServices appointmentServices;
 
     @PostMapping(path = "/appointment")
     public Appointment createAppointment (@RequestBody Appointment newAppointment){
-        return AppointmentServices.createAppointment(newAppointment);
+        return appointmentServices.createAppointment(newAppointment);
     }
 
 
