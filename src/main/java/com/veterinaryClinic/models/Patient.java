@@ -63,7 +63,6 @@ public class Patient {
     private String treatment;
 
     @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    private List<Appointment> appointments = new ArrayList<>();//falta el modelo que me lo baje de
-
+    private List<Appointment> appointments = new ArrayList<>();
 }
 
