@@ -30,6 +30,7 @@ import lombok.Setter;
     @Index(name = "idx_patient_tutorName", columnList = "tutorName"),
     @Index(name = "idx_patient_identification_tutor", columnList = "identificationNumber, tutorName")
 })
+
 public class Patient {
 
     @Id
@@ -64,5 +65,6 @@ public class Patient {
 
     @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Appointment> appointments = new ArrayList<>();
+
 }
 
