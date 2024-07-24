@@ -40,7 +40,6 @@ public class Appointment {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
     private LocalTime time;
 
-
     @Column(name = "Emergency consultation")
     private boolean emergency;
 
