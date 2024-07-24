@@ -22,17 +22,16 @@ public class PatientControllers {
 
   @Autowired private PatientServices patientService;
 
+  @PostMapping
+  public ResponseEntity<Patient> createPatient(@RequestBody Patient newPatient) {
+      Patient patient = patientService.cretePatient(newPatient);
+      return new ResponseEntity<>(patient, HttpStatus.CREATED);
+  }
 
-    @PostMapping
-    public ResponseEntity<Patient> createPatient(@RequestBody Patient newPatient) {
-        Patient patient = patientService.cretePatient(newPatient);
-        return new ResponseEntity<>(patient, HttpStatus.CREATED);
-    }
-
-    @GetMapping(path = "/patient")
-    public List<Patient> getAllPatients(){
-        return patientService.getAllPatients();
-    }
+  @GetMapping(path = "/patient")
+  public List<Patient> getAllPatients(){
+      return patientService.getAllPatients();
+  }    
 
   @GetMapping(path = "patient/{id}")
   public Optional<Patient> getPatientbyId(@PathVariable Long id) {

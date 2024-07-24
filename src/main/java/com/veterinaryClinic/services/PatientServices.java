@@ -13,12 +13,12 @@ import com.veterinaryClinic.repositories.IPatientRepository;
 @Service
 public class PatientServices {
 
-     @Autowired IPatientRepository iPatientRepository;
+  @Autowired IPatientRepository iPatientRepository;
 
-     public Patient cretePatient(Patient newPatient){
-        return iPatientRepository.save(newPatient);
+  public Patient cretePatient(Patient newPatient){
+    return iPatientRepository.save(newPatient);
 
-    }
+  }
 
   public List<Patient> getAllPatients() {
     return (List<Patient>) iPatientRepository.findAll();
