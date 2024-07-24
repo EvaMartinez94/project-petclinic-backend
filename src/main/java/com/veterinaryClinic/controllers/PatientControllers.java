@@ -16,13 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.veterinaryClinic.models.Patient;
 import com.veterinaryClinic.services.PatientServices;
 
-
 @RestController
 @RequestMapping("/api/vc/")
 public class PatientControllers {
-    
-    @Autowired
-    private PatientServices patientService;
+
+  @Autowired private PatientServices patientService;
 
 
     @PostMapping
@@ -36,18 +34,18 @@ public class PatientControllers {
         return patientService.getAllPatients();
     }
 
-    @GetMapping(path = "patient/{id}")
-    public Optional<Patient> getPatientbyId(@PathVariable Long id){
-        return patientService.getPatientbyId(id);
-    }
+  @GetMapping(path = "patient/{id}")
+  public Optional<Patient> getPatientbyId(@PathVariable Long id) {
+    return patientService.getPatientbyId(id);
+  }
 
-    @GetMapping(path = "/patient/{tutorName}")
-    public List<Patient> getByTutorName(String tutorName){
-        return patientService.getByTutorName(tutorName);
-    }
+  @GetMapping(path = "/patient/{tutorName}")
+  public List<Patient> getByTutorName(String tutorName) {
+    return patientService.getByTutorName(tutorName);
+  }
 
-    @GetMapping(path = "/patient/{identificationNumber}")
-    public List<Patient> getByIdentificationNumber(Long identificationNumber){
-        return patientService.getByIdentificationNumber(identificationNumber);
-    }
+  @GetMapping(path = "/patient/{identificationNumber}")
+  public List<Patient> getByIdentificationNumber(Long identificationNumber) {
+    return patientService.getByIdentificationNumber(identificationNumber);
+  }
 }

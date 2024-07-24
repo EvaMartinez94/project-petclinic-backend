@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.veterinaryClinic.models.Patient;
 import com.veterinaryClinic.repositories.IPatientRepository;
+import org.springframework.stereotype.Service;
+
+@Service
 
 @Service
 public class PatientServices {
@@ -19,22 +22,21 @@ public class PatientServices {
 
     }
 
-     public List<Patient> getAllPatients(){
-        return (List<Patient>) iPatientRepository.findAll();
-     }
+  public List<Patient> getAllPatients() {
+    return (List<Patient>) iPatientRepository.findAll();
+  }
 
-     public Optional<Patient> getPatientbyId(Long id){
-        Patient patient = iPatientRepository.findById(id).orElseThrow();
-        return Optional.of(patient);
-     }
+  public Optional<Patient> getPatientbyId(Long id) {
+    Patient patient = iPatientRepository.findById(id).orElseThrow();
+    return Optional.of(patient);
+  }
 
-     public List<Patient> getByTutorName(String tutorName){
-        return (List<Patient>) iPatientRepository.findByTutorName(tutorName);
-     }
+  public List<Patient> getByTutorName(String tutorName) {
+    return (List<Patient>) iPatientRepository.findByTutorName(tutorName);
+  }
 
-     public List<Patient> getByIdentificationNumber(Long identificationNumber){
-        return (List<Patient>) iPatientRepository.findByIdentificationNumber(identificationNumber);
-     }
-
+  public List<Patient> getByIdentificationNumber(Long identificationNumber) {
+    return (List<Patient>) iPatientRepository.findByIdentificationNumber(identificationNumber);
+  }
 }
 
