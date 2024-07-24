@@ -9,12 +9,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.veterinaryClinic.models.Patient;
 import com.veterinaryClinic.services.PatientServices;
+
 
 @RestController
 @RequestMapping("/api/vc/")
@@ -47,4 +49,12 @@ public class PatientControllers {
   public List<Patient> getByIdentificationNumber(Long identificationNumber) {
     return patientService.getByIdentificationNumber(identificationNumber);
   }
+  
+  @PutMapping("/patient/{id}")
+  public void updatedPatient(@PathVariable Patient patient, @RequestBody Long id) {
+    patientService.updatedPatient(patient, id);
+
+
+  }
+
 }

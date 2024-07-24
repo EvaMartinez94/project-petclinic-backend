@@ -36,5 +36,10 @@ public class PatientServices {
   public List<Patient> getByIdentificationNumber(Long identificationNumber) {
     return (List<Patient>) iPatientRepository.findByIdentificationNumber(identificationNumber);
   }
+
+  public void updatedPatient(Patient patient, Long id) {
+    patient.setPatient_id(id);    
+    iPatientRepository.save(patient);
+  }
 }
 
