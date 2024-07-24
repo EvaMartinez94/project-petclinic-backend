@@ -11,11 +11,7 @@ import com.veterinaryClinic.repositories.IPatientRepository;
 @Service
 public class PatientServices {
 
-
-@Service
-//CREATE
      @Autowired IPatientRepository iPatientRepository;
-
 
     public Patient cretePatient(Patient newPatient){
         return iPatientRepository.save(newPatient);
