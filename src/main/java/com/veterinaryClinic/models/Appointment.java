@@ -1,19 +1,30 @@
 package com.veterinaryClinic.models;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.persistence.*;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-
 @Entity
-@Table
+@Table(name = "appointment")
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Appointment {
 
         @Id
@@ -29,8 +40,6 @@ public class Appointment {
         @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
         private LocalTime time;
 
-        @Column(name = "Patient", nullable = false)
-        private String patient;
 
         @Column(name = "Emergency consultation")
         private boolean emergency;
@@ -40,5 +49,10 @@ public class Appointment {
 
         @Column(name = "Appointment status")
         private boolean past;
+
+        @ManyToOne(fetch= FetchType.LAZY)
+        @JoinColumn(name="patient_id")
+        private Patient patient;
+
     }
 
