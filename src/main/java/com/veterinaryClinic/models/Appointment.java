@@ -1,5 +1,6 @@
 package com.veterinaryClinic.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,9 +22,11 @@ public class Appointment {
         private int id;
 
         @Column(name = "Date", nullable = false)
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
         private LocalDate date;
 
         @Column(name = "Time", nullable = false)
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
         private LocalTime time;
 
         @Column(name = "Patient", nullable = false)
