@@ -32,4 +32,6 @@ public class PatientServices {
         return (List<Patient>) iPatientRepository.findByIdentificationNumber(identificationNumber);
      }
 
+     public void deletePatient(Long id)
+
 }
