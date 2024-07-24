@@ -8,9 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.veterinaryClinic.models.Patient;
 import com.veterinaryClinic.repositories.IPatientRepository;
-import org.springframework.stereotype.Service;
 
-@Service
 
 @Service
 public class PatientServices {
