@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import static org.hamcrest.Matchers.any;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class AppointmentServicesTest {
 
@@ -53,5 +53,12 @@ public class AppointmentServicesTest {
     appointmentKoda.setReason("caca explosiva");
     appointmentKoda.setPast(true);
     appointmentKoda.setTreatment("Aspirina");
+  }
+
+  @Test
+  void test_delete_appointment() {
+    Integer appointmentId = 1;
+    appointmentServices.deleteAppointment(appointmentId);
+    verify(iAppointmentRepository, times(1)).deleteById(appointmentId);
   }
 }
