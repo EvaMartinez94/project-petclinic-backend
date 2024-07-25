@@ -11,6 +11,10 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.when;
+
 public class AppointmentServicesTest {
 
   @Mock private IAppointmentRepository iAppointmentRepository;
@@ -40,5 +44,18 @@ public class AppointmentServicesTest {
     appointmentKoda.setReason("caca explosiva");
     appointmentKoda.setPast(true);
   }
+  @Test
+  public void createAppointment(){
+    when(iAppointmentRepository.(any(Appointment.class))).thenReturn(appointmentDuque);
+    Appointment newAppointment = appointmentServices.createAppointment(appointmentDuque);
 
+    assertNotNull(newAppointment);
+    assertEquals(2, newAppointment.getId());
+    assertEquals(LocalDate.of(2024, 10, 10), newAppointment.getDate());
+    assertEquals(LocalTime.of(19, 30), newAppointment.getTime());
+    assertEquals("patientDuque", newAppointment.getPatient());
+    assertEquals(false, newAppointment.isEmergency());
+    assertEquals("lele pancha", newAppointment.getReason());
+    assertEquals(false, newAppointment.isPast());
+  }
 }
