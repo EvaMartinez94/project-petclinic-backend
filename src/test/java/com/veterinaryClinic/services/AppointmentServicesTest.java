@@ -11,10 +11,10 @@ import org.mockito.MockitoAnnotations;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Optional;
 
-import static org.hamcrest.Matchers.any;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.ArgumentMatchers.any;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 public class AppointmentServicesTest {
@@ -56,10 +56,18 @@ public class AppointmentServicesTest {
   }
 
   @Test
-  void test_update_appointment() {
-    appointmentServices.updateAppointment(appointmentKoda, 2);
+  void test_if_updateAppointment_update_the_object() {
+    when(iAppointmentRepository.save(any(Appointment.class))).thenReturn(appointmentKoda);
 
-    verify(iAppointmentRepository, times(1)).save(appointmentKoda);
-    assertEquals(2, appointmentKoda.getId());
+    Appointment result = new Appointment();
+    result.setReason("caca explosiva");
+    result.setTreatment("Aspirina");
+
+    appointmentServices.updateAppointment(result, 2);
+
+    assertEquals("caca explosiva", result.getReason());
+    assertEquals("Aspirina", result.getTreatment());
+    assertEquals(2, result.getId());
+    verify(iAppointmentRepository, times(1)).save(result);
   }
 }
