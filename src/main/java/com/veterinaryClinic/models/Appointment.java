@@ -49,6 +49,9 @@ public class Appointment {
     @Column(name = "Appointment status")
     private boolean past;
 
+    @Column(name = "treatment")
+    private String treatment;
+
     @ManyToOne(fetch= FetchType.LAZY)
     @JoinColumn(name="patient_id")
     private Patient patient;

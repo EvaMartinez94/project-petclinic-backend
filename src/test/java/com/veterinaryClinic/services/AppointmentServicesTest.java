@@ -12,6 +12,11 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
+import static org.hamcrest.Matchers.any;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.when;
+
 public class AppointmentServicesTest {
 
   @Mock private IAppointmentRepository iAppointmentRepository;
@@ -36,6 +41,7 @@ public class AppointmentServicesTest {
     appointmentDuque.setEmergency(false);
     appointmentDuque.setReason("lele pancha");
     appointmentDuque.setPast(false);
+    appointmentDuque.setTreatment("Ibuprofeno");
 
     appointmentKoda = new Appointment();
     appointmentKoda.setDate(LocalDate.of(2024, 04, 29));
@@ -44,6 +50,6 @@ public class AppointmentServicesTest {
     appointmentKoda.setEmergency(true);
     appointmentKoda.setReason("caca explosiva");
     appointmentKoda.setPast(true);
+    appointmentKoda.setTreatment("Aspirina");
   }
-
 }
