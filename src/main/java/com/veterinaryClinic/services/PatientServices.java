@@ -1,20 +1,24 @@
 package com.veterinaryClinic.services;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.veterinaryClinic.models.Patient;
 import com.veterinaryClinic.repositories.IPatientRepository;
-import org.springframework.stereotype.Service;
+
 
 @Service
-
 public class PatientServices {
 
   @Autowired IPatientRepository iPatientRepository;
+
+  public Patient cretePatient(Patient newPatient){
+    return iPatientRepository.save(newPatient);
+
+  }
 
   public List<Patient> getAllPatients() {
     return (List<Patient>) iPatientRepository.findAll();
@@ -29,7 +33,13 @@ public class PatientServices {
     return (List<Patient>) iPatientRepository.findByTutorName(tutorName);
   }
 
-  public List<Patient> getByIdentificationNumber(Long identificationNumber) {
-    return (List<Patient>) iPatientRepository.findByIdentificationNumber(identificationNumber);
-  }
+     public List<Patient> getByIdentificationNumber(Long identificationNumber){
+        return (List<Patient>) iPatientRepository.findByIdentificationNumber(identificationNumber);
+     }
+
+     public void deletePatient(Long identificationNumber){
+      iPatientRepository.deleteById(identificationNumber);
+     }
+
 }
+
