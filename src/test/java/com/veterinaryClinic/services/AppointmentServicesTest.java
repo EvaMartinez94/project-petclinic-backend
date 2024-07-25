@@ -35,6 +35,7 @@ public class AppointmentServicesTest {
     patientKoda.setName("Koda");
 
     appointmentDuque = new Appointment();
+    appointmentDuque.setId(1);
     appointmentDuque.setDate(LocalDate.of(2024, 10, 10));
     appointmentDuque.setTime(LocalTime.of(19, 30));
     appointmentDuque.setPatient(patientDuque);
@@ -44,6 +45,7 @@ public class AppointmentServicesTest {
     appointmentDuque.setTreatment("Ibuprofeno");
 
     appointmentKoda = new Appointment();
+    appointmentKoda.setId(2);
     appointmentKoda.setDate(LocalDate.of(2024, 04, 29));
     appointmentKoda.setTime(LocalTime.of(12, 10));
     appointmentKoda.setPatient(patientKoda);
