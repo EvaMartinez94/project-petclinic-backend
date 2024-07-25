@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import static org.hamcrest.Matchers.any;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class AppointmentServicesTest {
 
@@ -53,5 +53,13 @@ public class AppointmentServicesTest {
     appointmentKoda.setReason("caca explosiva");
     appointmentKoda.setPast(true);
     appointmentKoda.setTreatment("Aspirina");
+  }
+
+  @Test
+  void test_update_appointment() {
+    appointmentServices.updateAppointment(appointmentKoda, 2);
+
+    verify(iAppointmentRepository, times(1)).save(appointmentKoda);
+    assertEquals(2, appointmentKoda.getId());
   }
 }
