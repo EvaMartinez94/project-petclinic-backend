@@ -11,10 +11,8 @@ import org.mockito.MockitoAnnotations;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Optional;
 
-import static org.hamcrest.Matchers.any;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 
 public class AppointmentServicesTest {
@@ -56,9 +54,11 @@ public class AppointmentServicesTest {
   }
 
   @Test
-  void test_delete_appointment() {
-    Integer appointmentId = 1;
-    appointmentServices.deleteAppointment(appointmentId);
-    verify(iAppointmentRepository, times(1)).deleteById(appointmentId);
+  void test_if_deleteAppointment_delete_the_object() {
+    when(iAppointmentRepository.findById(2)).thenReturn(Optional.of(appointmentKoda));
+
+    appointmentServices.deleteAppointment(2);
+
+    verify(iAppointmentRepository, times(1)).deleteById(2);
   }
 }
