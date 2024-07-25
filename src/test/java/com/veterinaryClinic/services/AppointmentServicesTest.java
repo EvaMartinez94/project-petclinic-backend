@@ -5,6 +5,7 @@ import com.veterinaryClinic.models.Patient;
 import com.veterinaryClinic.repositories.IAppointmentRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -16,10 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
-import static org.hamcrest.Matchers.any;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.when;
+
 
 public class AppointmentServicesTest {
 
@@ -60,16 +58,17 @@ public class AppointmentServicesTest {
   }
   @Test
   public void createAppointment(){
-    when(iAppointmentRepository.(any(Appointment.class))).thenReturn(appointmentDuque);
+    when(iAppointmentRepository.save(ArgumentMatchers.any(Appointment.class))).thenReturn(appointmentDuque);
     Appointment newAppointment = appointmentServices.createAppointment(appointmentDuque);
 
     assertNotNull(newAppointment);
-    assertEquals(2, newAppointment.getId());
+    assertEquals(1, newAppointment.getId());
     assertEquals(LocalDate.of(2024, 10, 10), newAppointment.getDate());
     assertEquals(LocalTime.of(19, 30), newAppointment.getTime());
-    assertEquals("patientDuque", newAppointment.getPatient());
+    assertEquals("Duque", newAppointment.getPatient().getName());
     assertEquals(false, newAppointment.isEmergency());
     assertEquals("lele pancha", newAppointment.getReason());
     assertEquals(false, newAppointment.isPast());
+    assertEquals("Ibuprofeno", newAppointment.getTreatment());
   }
 }
