@@ -56,18 +56,22 @@ public class AppointmentServicesTest {
   }
 
   @Test
-  void test_if_updateAppointment_update_the_object() {
+  void test_if_updateAppointment_updates_the_object() {
     when(iAppointmentRepository.save(any(Appointment.class))).thenReturn(appointmentKoda);
 
-    Appointment result = new Appointment();
-    result.setReason("caca explosiva");
-    result.setTreatment("Aspirina");
+    Appointment result = appointmentKoda;
 
     appointmentServices.updateAppointment(result, 2);
 
-    assertEquals("caca explosiva", result.getReason());
-    assertEquals("Aspirina", result.getTreatment());
     assertEquals(2, result.getId());
+    assertEquals(LocalDate.of(2024, 04, 29), result.getDate());
+    assertEquals(LocalTime.of(12, 10), result.getTime());
+    assertEquals("Koda", result.getPatient().getName());
+    assertEquals(true, result.isEmergency());
+    assertEquals("caca explosiva", result.getReason());
+    assertEquals(true, result.isPast());
+    assertEquals("Aspirina", result.getTreatment());
+
     verify(iAppointmentRepository, times(1)).save(result);
   }
 }
