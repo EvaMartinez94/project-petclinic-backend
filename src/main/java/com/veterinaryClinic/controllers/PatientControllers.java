@@ -23,7 +23,7 @@ public class PatientControllers {
 
   @Autowired private PatientServices patientService;
 
-  @PostMapping
+  @PostMapping(path = "/patient")
   public ResponseEntity<Patient> createPatient(@RequestBody Patient newPatient) {
       Patient patient = patientService.cretePatient(newPatient);
       return new ResponseEntity<>(patient, HttpStatus.CREATED);
