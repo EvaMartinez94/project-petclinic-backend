@@ -36,7 +36,6 @@ public class PatientModelsTest {
         patient.setGender("Male");
         patient.setTutorName("John");
         patient.setTutorPhone("622-622-123");
-        patient.setTreatment("Regular checkup");
     }
 
     @Test
@@ -87,7 +86,6 @@ public class PatientModelsTest {
         patient2.setGender("Male");
         patient2.setTutorName("Jane");
         patient2.setTutorPhone("622-622-567");
-        patient2.setTreatment("Vaccination");
 
         patientRepository.save(patient);
         patientRepository.save(patient2);
