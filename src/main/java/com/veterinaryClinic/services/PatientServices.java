@@ -15,30 +15,31 @@ public class PatientServices {
 
   @Autowired IPatientRepository iPatientRepository;
 
-  public Patient cretePatient(Patient newPatient){
+  public Patient createPatient(Patient newPatient){
     return iPatientRepository.save(newPatient);
 
   }
 
-  public List<Patient> getAllPatients() {
+  public List<Patient> getAllPatients(){
     return (List<Patient>) iPatientRepository.findAll();
-  }
+ }
 
-  public Optional<Patient> getPatientbyId(Long id) {
+ public Optional<Patient> getPatientbyId(Long id){
     Patient patient = iPatientRepository.findById(id).orElseThrow();
     return Optional.of(patient);
-  }
+ }
 
-  public List<Patient> getByTutorName(String tutorName) {
+ public List<Patient> getByTutorName(String tutorName){
     return (List<Patient>) iPatientRepository.findByTutorName(tutorName);
-  }
+ }
 
-  public List<Patient> getByIdentificationNumber(Long identificationNumber) {
+ public List<Patient> getByIdentificationNumber(Long identificationNumber){
     return (List<Patient>) iPatientRepository.findByIdentificationNumber(identificationNumber);
-  }
+ }
 
-  public void updatedPatient(Patient patient, Long id) {
-    patient.setPatient_id(id);    
+
+  public void updatePatient(Long id, Patient patient) {
+    patient.setPatient_id(id);
     iPatientRepository.save(patient);
   }
 }

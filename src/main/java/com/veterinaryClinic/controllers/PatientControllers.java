@@ -19,41 +19,42 @@ import com.veterinaryClinic.services.PatientServices;
 
 
 @RestController
-@RequestMapping("/api/vc/")
+@RequestMapping("/api/vc")
 public class PatientControllers {
 
-  @Autowired private PatientServices patientService;
 
-  @PostMapping
+  @PostMapping(path = "/patient")
   public ResponseEntity<Patient> createPatient(@RequestBody Patient newPatient) {
-      Patient patient = patientService.cretePatient(newPatient);
+      Patient patient = patientService.createPatient(newPatient);
       return new ResponseEntity<>(patient, HttpStatus.CREATED);
   }
 
-  @GetMapping(path = "/patient")
-  public List<Patient> getAllPatients(){
-      return patientService.getAllPatients();
-  }    
+  @Autowired
+    private PatientServices patientService;
 
-  @GetMapping(path = "patient/{id}")
-  public Optional<Patient> getPatientbyId(@PathVariable Long id) {
-    return patientService.getPatientbyId(id);
-  }
+    @GetMapping
+    public List<Patient> getAllPatients(){
+        return patientService.getAllPatients();
+    }
 
-  @GetMapping(path = "/patient/{tutorName}")
-  public List<Patient> getByTutorName(String tutorName) {
-    return patientService.getByTutorName(tutorName);
-  }
+    @GetMapping(path = "patient/{id}")
+    public Optional<Patient> getPatientbyId(@PathVariable Long id){
+        return patientService.getPatientbyId(id);
+    }
 
-  @GetMapping(path = "/patient/{identificationNumber}")
-  public List<Patient> getByIdentificationNumber(Long identificationNumber) {
-    return patientService.getByIdentificationNumber(identificationNumber);
-  }
+    @GetMapping(path = "/patient/tn/{tutorName}")
+    public List<Patient> getByTutorName(@PathVariable String tutorName){
+        return patientService.getByTutorName(tutorName);
+    }
+
+    @GetMapping(path = "/patient/in/{identificationNumber}")
+    public List<Patient> getByIdentificationNumber(@PathVariable Long identificationNumber){
+        return patientService.getByIdentificationNumber(identificationNumber);
+    }
   
   @PutMapping("/patient/{id}")
-  public void updatedPatient(@PathVariable Patient patient, @RequestBody Long id) {
-    patientService.updatedPatient(patient, id);
-
+  public void updatedPatient(@RequestBody Long patient_id , @PathVariable Patient patient) {
+    patientService.updatePatient(patient_id, patient);
 
   }
 

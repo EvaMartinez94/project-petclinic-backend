@@ -60,9 +60,6 @@ public class Patient {
     @Column(name = "tutorPhone", nullable = false)
     private String tutorPhone;
 
-    @Column(name = "treatment")
-    private String treatment;
-
     @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Appointment> appointments = new ArrayList<>();
 
