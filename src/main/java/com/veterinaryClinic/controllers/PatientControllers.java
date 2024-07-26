@@ -17,21 +17,19 @@ import org.springframework.web.bind.annotation.RestController;
 import com.veterinaryClinic.models.Patient;
 import com.veterinaryClinic.services.PatientServices;
 
-
 @RestController
 @RequestMapping("/api/vc")
 public class PatientControllers {
 
-
-  @PostMapping(path = "/patient")
-  public ResponseEntity<Patient> createPatient(@RequestBody Patient newPatient) {
-      Patient patient = patientService.createPatient(newPatient);
-      return new ResponseEntity<>(patient, HttpStatus.CREATED);
-  }
-
   @Autowired
     private PatientServices patientService;
 
+    @PostMapping(path = "/patient")
+    public ResponseEntity<Patient> createPatient(@RequestBody Patient newPatient) {
+      Patient patient = patientService.createPatient(newPatient);
+      return new ResponseEntity<>(patient, HttpStatus.CREATED);
+    }
+    
     @GetMapping
     public List<Patient> getAllPatients(){
         return patientService.getAllPatients();

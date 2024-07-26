@@ -3,6 +3,7 @@ package com.veterinaryClinic.models;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Column;
@@ -55,6 +56,7 @@ public class Appointment {
 
     @ManyToOne(fetch= FetchType.LAZY)
     @JoinColumn(name="patient_id")
+    @JsonBackReference
     private Patient patient;
         
 
