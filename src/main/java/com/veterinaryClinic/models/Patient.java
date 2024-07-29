@@ -3,7 +3,6 @@ package com.veterinaryClinic.models;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.NaturalId;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
