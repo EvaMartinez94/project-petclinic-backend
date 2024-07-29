@@ -50,8 +50,8 @@ public class PatientControllers {
         return patientService.getByIdentificationNumber(identificationNumber);
     }
   
-  @PutMapping("/patient/{id}")
-  public void updatedPatient(@RequestBody Long patient_id , @PathVariable Patient patient) {
+    @PutMapping("/patient/{id}")
+    public void updatedPatient(@RequestBody Long patient_id , @PathVariable Patient patient) {
     patientService.updatePatient(patient_id, patient);
 
   }
