@@ -53,8 +53,9 @@ public class Appointment {
     @Column(name = "treatment")
     private String treatment;
 
-
+    @ManyToOne(fetch= FetchType.LAZY)
     @JoinColumn(name="patient_id")
+    @JsonBackReference
     private Patient patient;
 
     }
