@@ -32,14 +32,20 @@ public class PatientServices {
   public List<Patient> getByTutorName(String tutorName) {
     return (List<Patient>) iPatientRepository.findByTutorName(tutorName);
   }
+  public List<Patient> getByIdentificationNumber(Long identificationNumber){
+    return (List<Patient>) iPatientRepository.findByIdentificationNumber(identificationNumber);
+ }
 
-     public List<Patient> getByIdentificationNumber(Long identificationNumber){
-        return (List<Patient>) iPatientRepository.findByIdentificationNumber(identificationNumber);
-     }
+ public void deletePatient(Long identificationNumber){
+  iPatientRepository.deleteById(identificationNumber);
 
-     public void deletePatient(Long identificationNumber){
-      iPatientRepository.deleteById(identificationNumber);
-     }
+ }
+ public void updatePatient(Long id, Patient patient) {
+  patient.setPatient_id(id);
+  iPatientRepository.save(patient);
+}
+
+
 
 }
 
