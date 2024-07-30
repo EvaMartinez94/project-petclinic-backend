@@ -71,4 +71,14 @@ public class AppointmentServicesTest {
     assertEquals(false, newAppointment.isPast());
     assertEquals("Ibuprofeno", newAppointment.getTreatment());
   }
+
+  @Test
+  public void getAllAppointment(){
+
+  }
+
+  @Test
+  public void getAppointmentId(){
+
+  }
 }
