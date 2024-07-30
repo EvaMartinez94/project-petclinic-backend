@@ -28,14 +28,14 @@ public class PatientControllers {
 
   @PostMapping(path = "/patient")
   public ResponseEntity<Patient> createPatient(@RequestBody Patient newPatient) {
-      Patient patient = patientService.cretePatient(newPatient);
-      return new ResponseEntity<>(patient, HttpStatus.CREATED);
+    Patient patient = patientService.cretePatient(newPatient);
+    return new ResponseEntity<>(patient, HttpStatus.CREATED);
   }
 
   @GetMapping(path = "/patient")
-  public List<Patient> getAllPatients(){
-      return patientService.getAllPatients();
-  }    
+  public List<Patient> getAllPatients() {
+    return patientService.getAllPatients();
+  }
 
   @GetMapping(path = "patient/{id}")
   public Optional<Patient> getPatientbyId(@PathVariable Long id) {
@@ -48,19 +48,17 @@ public class PatientControllers {
   }
 
   @GetMapping(path = "/patient/in/{identificationNumber}")
-  public List<Patient> getByIdentificationNumber(@PathVariable Long identificationNumber){
-      return patientService.getByIdentificationNumber(identificationNumber);
+  public List<Patient> getByIdentificationNumber(@PathVariable Long identificationNumber) {
+    return patientService.getByIdentificationNumber(identificationNumber);
   }
+
   @DeleteMapping(path = "/patient/{identificationNumber}")
-    public void deletePatient(@PathVariable Long identidicationNumber){
-        patientService.deletePatient(identidicationNumber);
+  public void deletePatient(@PathVariable Long identidicationNumber) {
+    patientService.deletePatient(identidicationNumber);
   }
 
   @PutMapping("/patient/{id}")
-    public void updatedPatient(@RequestBody Long patient_id , @PathVariable Patient patient) {
+  public void updatedPatient(@RequestBody Long patient_id, @PathVariable Patient patient) {
     patientService.updatePatient(patient_id, patient);
-
   }
-
-    
 }

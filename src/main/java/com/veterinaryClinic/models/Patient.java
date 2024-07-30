@@ -27,42 +27,49 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "patient", indexes = {
-    @Index(name = "idx_patient_identificationNumber", columnList = "identificationNumber"),
-    @Index(name = "idx_patient_tutorName", columnList = "tutorName"),
-    @Index(name = "idx_patient_identification_tutor", columnList = "identificationNumber, tutorName")
-})
-
+@Table(
+    name = "patient",
+    indexes = {
+      @Index(name = "idx_patient_identificationNumber", columnList = "identificationNumber"),
+      @Index(name = "idx_patient_tutorName", columnList = "tutorName"),
+      @Index(
+          name = "idx_patient_identification_tutor",
+          columnList = "identificationNumber, tutorName")
+    })
 public class Patient {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long patient_id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id")
+  private Long patient_id;
 
-    @NaturalId
-    @Column(name = "identificationNumber", nullable = false, unique = true)
-    private Long identificationNumber;
+  @NaturalId
+  @Column(name = "identificationNumber", nullable = false, unique = true)
+  private Long identificationNumber;
 
-    @Column(name = "name", nullable = false)
-    private String name;
+  @Column(name = "name", nullable = false)
+  private String name;
 
-    @Column(name = "age")
-    private int age;
+  @Column(name = "age")
+  private int age;
 
-    @Column(name = "race")
-    private String race;
+  @Column(name = "race")
+  private String race;
 
-    @Column(name = "gender")
-    private String gender;
+  @Column(name = "gender")
+  private String gender;
 
-    @Column(name = "tutorName", nullable = false)
-    private String tutorName;
+  @Column(name = "tutorName", nullable = false)
+  private String tutorName;
 
-    @Column(name = "tutorPhone", nullable = false)
-    private String tutorPhone;
+  @Column(name = "tutorPhone", nullable = false)
+  private String tutorPhone;
 
-    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    @JsonManagedReference
-    private List<Appointment> appointments = new ArrayList<>();
+  @OneToMany(
+      mappedBy = "patient",
+      cascade = CascadeType.ALL,
+      orphanRemoval = true,
+      fetch = FetchType.LAZY)
+  @JsonManagedReference
+  private List<Appointment> appointments = new ArrayList<>();
 }

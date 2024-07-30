@@ -28,35 +28,32 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Appointment {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private int id;
 
-    private int id;
+  @Column(name = "Date", nullable = false)
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+  private LocalDate date;
 
-    @Column(name = "Date", nullable = false)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
-    private LocalDate date;
+  @Column(name = "Time", nullable = false)
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
+  private LocalTime time;
 
-    @Column(name = "Time", nullable = false)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
-    private LocalTime time;
+  @Column(name = "Emergency consultation")
+  private boolean emergency;
 
-    @Column(name = "Emergency consultation")
-    private boolean emergency;
+  @Column(name = "Reason for appointment")
+  private String reason;
 
-    @Column(name = "Reason for appointment")
-    private String reason;
+  @Column(name = "Appointment status")
+  private boolean past;
 
-    @Column(name = "Appointment status")
-    private boolean past;
+  @Column(name = "treatment")
+  private String treatment;
 
-    @Column(name = "treatment")
-    private String treatment;
-
-    @ManyToOne(fetch= FetchType.LAZY)
-    @JsonBackReference
-    @JoinColumn(name="patient_id")
-    private Patient patient;
-
-    }
-
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JsonBackReference
+  @JoinColumn(name = "patient_id")
+  private Patient patient;
+}
