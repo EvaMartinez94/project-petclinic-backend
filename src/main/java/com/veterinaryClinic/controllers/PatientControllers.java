@@ -31,7 +31,7 @@ public class PatientControllers {
       return new ResponseEntity<>(patient, HttpStatus.CREATED);
     }
     
-    @GetMapping
+    @GetMapping(path = "/patient")
     public List<Patient> getAllPatients(){
         return patientService.getAllPatients();
     }
