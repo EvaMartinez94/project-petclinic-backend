@@ -63,16 +63,23 @@ public class AppointmentControllersTest {
         appointmentKoda.setPast(true);
         appointmentKoda.setTreatment("Aspirina");
     }
-    @Test
-   void createAppointment() throws Exception {
-        when(appointmentServices.createAppointment(any(Appointment.class))).thenReturn(appointmentDuque);
-        String appointmentJson = "{'date': '10-10-2024', 'time': '19:30', 'patient': 'patient_id:02','emergency': false,'reason': 'lele pancha','past': false,'treatment': 'Ibuprofeno'}";
-        mockMvc.perform(post("/api/vc/appointment")
+
+  @Test
+  void createAppointment() throws Exception {
+    when(appointmentServices.createAppointment(any(Appointment.class)))
+        .thenReturn(appointmentDuque);
+    String appointmentJson =
+        "{'date': '10-10-2024', 'time': '19:30', 'patient': 'patient_id:02','emergency': false,'reason': 'lele pancha','past': false,'treatment': 'Ibuprofeno'}";
+    mockMvc
+        .perform(
+            post("/api/vc/appointment")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(appointmentJson))
-                .andExpect(status().isOk())
-                .andExpect(content().json("{'id':'1',date': '10-10-2024', 'time': '19:30', 'patient': 'patient_id:02','emergency': false,'reason': 'lele pancha','past': false,'treatment': 'Ibuprofeno'}"));
+        .andExpect(status().isOk())
+        .andExpect(
+            content()
+                .json(
+                    "{'id':'1',date': '10-10-2024', 'time': '19:30', 'patient': 'patient_id:02','emergency': false,'reason': 'lele pancha','past': false,'treatment': 'Ibuprofeno'}"));
        }
-
    }
 
