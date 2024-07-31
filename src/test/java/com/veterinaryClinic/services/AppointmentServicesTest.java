@@ -12,6 +12,8 @@ import org.mockito.MockitoAnnotations;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -26,7 +28,7 @@ public class AppointmentServicesTest {
 
   private Appointment appointmentDuque;
   private Appointment appointmentKoda;
-  private ArrayList<Appointment> appointmentList = new ArrayList<>();
+  private List<Appointment> appointmentList = new ArrayList<>();
 
   @BeforeEach
   public void setUp() {
@@ -55,6 +57,9 @@ public class AppointmentServicesTest {
     appointmentKoda.setReason("caca explosiva");
     appointmentKoda.setPast(true);
     appointmentKoda.setTreatment("Aspirina");
+
+    appointmentList.add(appointmentDuque);
+    appointmentList.add(appointmentKoda);
   }
   @Test
   public void createAppointment(){
@@ -73,12 +78,18 @@ public class AppointmentServicesTest {
   }
 
   @Test
-  public void getAllAppointment(){
-
+  public void getAllAppointment() {
+    when(iAppointmentRepository.findAll()).thenReturn(appointmentList);
+    List<Appointment> allAppointments = appointmentServices.getAllAppointment();
+    assertEquals(2, allAppointments.size());
+    assertEquals("Duque", allAppointments.get(0).getPatient().getName());
+    assertEquals("Koda", allAppointments.get(1).getPatient().getName());
   }
 
   @Test
   public void getAppointmentId(){
-
+when(iAppointmentRepository.findById(0)).thenReturn(Optional.of(appointmentDuque));
+Optional<Appointment> appointmentId = appointmentServices.getAppointmentId(0);
+assertEquals("Duque", appointmentId.get().getPatient().getName());
   }
 }
