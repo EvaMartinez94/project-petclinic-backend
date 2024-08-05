@@ -4,9 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.veterinaryClinic.models.Patient;
+import com.veterinaryClinic.models.PatientDTO;
 import com.veterinaryClinic.repositories.IPatientRepository;
 
 
@@ -31,16 +34,34 @@ public class PatientServices {
 
  public List<Patient> getByTutorName(String tutorName){
     return (List<Patient>) iPatientRepository.findByTutorName(tutorName);
- }
-
- public List<Patient> getByIdentificationNumber(Long identificationNumber){
+  }
+  public List<Patient> getByIdentificationNumber(Long identificationNumber){
     return (List<Patient>) iPatientRepository.findByIdentificationNumber(identificationNumber);
  }
 
+ public void deletePatient(Long patient_id){
+  iPatientRepository.deleteById(patient_id);
 
-  public void updatePatient(Long id, Patient patient) {
-    patient.setPatient_id(id);
-    iPatientRepository.save(patient);
-  }
+ }
+ public Patient updatePatient(Long id, PatientDTO patientDTO) {
+        Optional<Patient> existingPatientOpt = iPatientRepository.findById(id);
+
+        if (existingPatientOpt.isPresent()) {
+            Patient existingPatient = existingPatientOpt.get();
+            // Actualizar los campos del paciente
+            existingPatient.setIdentificationNumber(patientDTO.getIdentificationNumber());
+            existingPatient.setName(patientDTO.getName());
+            existingPatient.setAge(patientDTO.getAge());
+            existingPatient.setRace(patientDTO.getRace());
+            existingPatient.setGender(patientDTO.getGender());
+            existingPatient.setTutorName(patientDTO.getTutorName());
+            existingPatient.setTutorPhone(patientDTO.getTutorPhone());
+            existingPatient.setUrl(patientDTO.getUrl());
+            return iPatientRepository.save(existingPatient);
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Patient not found with id " + id);
+        }
+    }   
+
 }
 
