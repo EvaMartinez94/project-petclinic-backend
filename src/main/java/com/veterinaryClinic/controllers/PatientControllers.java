@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.veterinaryClinic.models.Patient;
+import com.veterinaryClinic.models.PatientDTO;
 import com.veterinaryClinic.services.PatientServices;
 
 @RestController
@@ -51,16 +52,14 @@ public class PatientControllers {
   public List<Patient> getByIdentificationNumber(@PathVariable Long identificationNumber){
       return patientService.getByIdentificationNumber(identificationNumber);
   }
-  @DeleteMapping(path = "/patient/{identificationNumber}")
-    public void deletePatient(@PathVariable Long identidicationNumber){
-        patientService.deletePatient(identidicationNumber);
+  @DeleteMapping(path = "/patient/{patient_id}")
+    public void deletePatient(@PathVariable Long patient_id){
+        patientService.deletePatient(patient_id);
   }
 
-  @PutMapping("/patient/{id}")
-    public void updatedPatient(@RequestBody Long patient_id , @PathVariable Patient patient) {
-    patientService.updatePatient(patient_id, patient);
-
-  }
-
-    
+  @PutMapping(path ="/patient/{id}")
+    public ResponseEntity<PatientDTO> updatePatient(@PathVariable Long id, @RequestBody PatientDTO patientDTO) {
+      patientService.updatePatient(id, patientDTO);
+      return ResponseEntity.ok(patientDTO);
+    }  
 }

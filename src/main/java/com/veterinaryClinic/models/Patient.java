@@ -62,6 +62,11 @@ public class Patient {
     @Column(name = "tutorPhone", nullable = false)
     private String tutorPhone;
 
+    @Column(name = "image")
+    private String url;
+
+
+
     @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<Appointment> appointments = new ArrayList<>();
