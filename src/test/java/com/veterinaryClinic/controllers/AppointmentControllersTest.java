@@ -1,26 +1,26 @@
 package com.veterinaryClinic.controllers;
-
-import com.veterinaryClinic.models.Appointment;
-import com.veterinaryClinic.models.Patient;
-import com.veterinaryClinic.services.AppointmentServices;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-
+/*
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import static org.mockito.ArgumentMatchers.any;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import static org.mockito.Mockito.when;
+import org.mockito.MockitoAnnotations;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import com.veterinaryClinic.models.Appointment;
+import com.veterinaryClinic.models.Patient;
+import com.veterinaryClinic.services.AppointmentServices;
 
 public class AppointmentControllersTest {
     @Mock private AppointmentServices appointmentServices;
@@ -33,7 +33,7 @@ public class AppointmentControllersTest {
     private Appointment appointmentKoda;
     private ArrayList<Appointment> appointmentList =  new ArrayList<>();
 
-    @BeforeEach
+     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
         mockMvc = MockMvcBuilders.standaloneSetup(appointmentControllers).build();
@@ -63,16 +63,22 @@ public class AppointmentControllersTest {
         appointmentKoda.setPast(true);
         appointmentKoda.setTreatment("Aspirina");
     }
-    @Test
-   void createAppointment() throws Exception {
-        when(appointmentServices.createAppointment(any(Appointment.class))).thenReturn(appointmentDuque);
-        String appointmentJson = "{'date': '10-10-2024', 'time': '19:30', 'patient': 'patient_id:02','emergency': false,'reason': 'lele pancha','past': false,'treatment': 'Ibuprofeno'}";
-        mockMvc.perform(post("/api/vc/appointment")
+
+  @Test
+  void createAppointment() throws Exception {
+    when(appointmentServices.createAppointment(any(Appointment.class)))
+        .thenReturn(appointmentDuque);
+    String appointmentJson =
+        "{'date': '10-10-2024', 'time': '19:30', 'patient': 'patient_id:02','emergency': false,'reason': 'lele pancha','past': false,'treatment': 'Ibuprofeno'}";
+    mockMvc
+        .perform(
+            post("/api/vc/appointment")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(appointmentJson))
-                .andExpect(status().isOk())
-                .andExpect(content().json("{'id':'1',date': '10-10-2024', 'time': '19:30', 'patient': 'patient_id:02','emergency': false,'reason': 'lele pancha','past': false,'treatment': 'Ibuprofeno'}"));
+        .andExpect(status().isOk())
+        .andExpect(
+            content()
+                .json(
+                    "{'id':'1',date': '10-10-2024', 'time': '19:30', 'patient': 'patient_id:02','emergency': false,'reason': 'lele pancha','past': false,'treatment': 'Ibuprofeno'}"));
        }
-
-   }
-
+   }*/

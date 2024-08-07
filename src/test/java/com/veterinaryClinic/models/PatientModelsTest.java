@@ -1,6 +1,8 @@
 package com.veterinaryClinic.models;
 
 import java.util.List;
+import com.veterinaryClinic.repositories.IPatientRepository;
+
 
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.veterinaryClinic.repositories.IPatientRepository;
+
 
 @SpringBootTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -36,6 +38,7 @@ public class PatientModelsTest {
         patient.setGender("Male");
         patient.setTutorName("John");
         patient.setTutorPhone("622-622-123");
+        patient.setUrl("src/static/images/logo.jpg");
     }
 
     @Test

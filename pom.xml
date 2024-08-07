@@ -60,8 +60,8 @@
 		</dependency>
 		<dependency>
 			<groupId>org.mockito</groupId>
-			<artifactId>mockito-all</artifactId>
-			<version>1.8.4</version>
+			<artifactId>mockito-core</artifactId>
+			<version>5.12.0</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -69,6 +69,30 @@
 			<artifactId>jakarta.validation-api</artifactId>
 			<version>3.0.0</version>
 		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>2.2.224</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>5.10.2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+        <groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.10.2</version>
+			<scope>test</scope>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -94,6 +118,11 @@
                     <compilerArgs>--enable-preview</compilerArgs>
                 </configuration>
             </plugin>
+			<plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>3.0.0-M5</version> <!-- Usa la versión adecuada -->
+        </plugin>
         </plugins>
 	</build>
 
