@@ -15,12 +15,10 @@ public class AppointmentModelsTest {
 
     @BeforeEach
     public void setUp() {
-        // Creamos un paciente para asociarlo con la cita
         patient = new Patient();
         patient.setIdentificationNumber(1L);
         patient.setName("Duque");
 
-        // Inicializamos una cita de ejemplo
         appointment = new Appointment();
         appointment.setId(1);
         appointment.setDate(LocalDate.of(2024, 9, 15));
@@ -46,10 +44,9 @@ public class AppointmentModelsTest {
 
     @Test
     public void testPatientRelationship() {
-        // Comprobamos la relación ManyToOne con el paciente
+
         assertNotNull(appointment.getPatient());
 
-        // Usamos assertEquals correctamente, con dos parámetros separados por una coma
         assertEquals(Long.valueOf(1), appointment.getPatient().getIdentificationNumber());
         assertEquals("Duque", appointment.getPatient().getName());
     }
@@ -67,7 +64,6 @@ public class AppointmentModelsTest {
                 "ibuprofen",
                 patient
         );
-
 
         assertEquals(2, newAppointment.getId());
         assertEquals(LocalDate.of(2024, 10, 20), newAppointment.getDate());
