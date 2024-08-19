@@ -53,9 +53,9 @@ public class AppointmentControllersTest {
     appointmentDuque.setTime(LocalTime.of(19, 30));
     appointmentDuque.setPatient(patientDuque);
     appointmentDuque.setEmergency(false);
-    appointmentDuque.setReason("lele pancha");
+    appointmentDuque.setReason("stomach ache");
     appointmentDuque.setPast(false);
-    appointmentDuque.setTreatment("Ibuprofeno");
+    appointmentDuque.setTreatment("ibuprofen");
 
     appointmentKoda = new Appointment();
     appointmentKoda.setId(2);
@@ -63,9 +63,9 @@ public class AppointmentControllersTest {
     appointmentKoda.setTime(LocalTime.of(12, 10));
     appointmentKoda.setPatient(patientKoda);
     appointmentKoda.setEmergency(true);
-    appointmentKoda.setReason("caca explosiva");
+    appointmentKoda.setReason("loose poop");
     appointmentKoda.setPast(true);
-    appointmentKoda.setTreatment("Aspirina");
+    appointmentKoda.setTreatment("aspirin");
 
     appointmentList.add(appointmentDuque);
     appointmentList.add(appointmentKoda);
@@ -80,9 +80,9 @@ public class AppointmentControllersTest {
             + "        \"date\": \"10-10-2024\",\n"
             + "        \"time\": \"19:30\",\n"
             + "        \"emergency\": false,\n"
-            + "        \"reason\": \"lele pancha\",\n"
+            + "        \"reason\": \"stomach ache\",\n"
             + "        \"past\": false,\n"
-            + "        \"treatment\": \"Ibuprofeno\"}";
+            + "        \"treatment\": \"ibuprofen\"}";
     mockMvc
         .perform(
             post("/api/vc/appointment")
@@ -96,9 +96,9 @@ public class AppointmentControllersTest {
                         + "        \"date\": \"10-10-2024\",\n"
                         + "        \"time\": \"19:30\",\n"
                         + "        \"emergency\": false,\n"
-                        + "        \"reason\": \"lele pancha\",\n"
+                        + "        \"reason\": \"stomach ache\",\n"
                         + "        \"past\": false,\n"
-                        + "        \"treatment\": \"Ibuprofeno\"}"));
+                        + "        \"treatment\": \"ibuprofen\"}"));
   }
 
 @Test
@@ -110,15 +110,15 @@ public class AppointmentControllersTest {
                         "        \"date\": \"10-10-2024\",\n" +
                         "        \"time\": \"19:30\",\n" +
                         "        \"emergency\": false,\n" +
-                        "        \"reason\": \"lele pancha\",\n" +
+                        "        \"reason\": \"stomach ache\",\n" +
                         "        \"past\": false,\n" +
-                        "        \"treatment\": \"Ibuprofeno\"},{\"id\": 2,\n" +
+                        "        \"treatment\": \"ibuprofen\"},{\"id\": 2,\n" +
                         "        \"date\": \"29-04-2024\",\n" +
                         "        \"time\": \"12:10\",\n" +
                         "        \"emergency\": true,\n" +
-                        "        \"reason\": \"caca explosiva\",\n" +
+                        "        \"reason\": \"loose poopa\",\n" +
                         "        \"past\": true,\n" +
-                        "        \"treatment\": \"Aspirina\"}]"));
+                        "        \"treatment\": \"aspirin\"}]"));
 }
 @Test
   void getAppointmentId() throws Exception {
@@ -129,9 +129,9 @@ public class AppointmentControllersTest {
                     "                        \"date\": \"29-04-2024\",\n" +
                     "                        \"time\": \"12:10\",\n" +
                     "                        \"emergency\": true,\n" +
-                    "                        \"reason\": \"caca explosiva\",\n" +
+                    "                        \"reason\": \"loose poop\",\n" +
                     "                        \"past\": true,\n" +
-                    "                        \"treatment\": \"Aspirina\"}"));
+                    "                        \"treatment\": \"aspirin\"}"));
 }
    }
 

@@ -44,9 +44,9 @@ public class AppointmentServicesTest {
     appointmentDuque.setTime(LocalTime.of(19, 30));
     appointmentDuque.setPatient(patientDuque);
     appointmentDuque.setEmergency(false);
-    appointmentDuque.setReason("lele pancha");
+    appointmentDuque.setReason("stomach ache");
     appointmentDuque.setPast(false);
-    appointmentDuque.setTreatment("Ibuprofeno");
+    appointmentDuque.setTreatment("ibuprofen");
 
     appointmentKoda = new Appointment();
     appointmentKoda.setId(2);
@@ -54,9 +54,9 @@ public class AppointmentServicesTest {
     appointmentKoda.setTime(LocalTime.of(12, 10));
     appointmentKoda.setPatient(patientKoda);
     appointmentKoda.setEmergency(true);
-    appointmentKoda.setReason("caca explosiva");
+    appointmentKoda.setReason("loose poop");
     appointmentKoda.setPast(true);
-    appointmentKoda.setTreatment("Aspirina");
+    appointmentKoda.setTreatment("aspirin");
 
     appointmentList.add(appointmentDuque);
     appointmentList.add(appointmentKoda);
@@ -72,9 +72,9 @@ public class AppointmentServicesTest {
     assertEquals(LocalTime.of(19, 30), newAppointment.getTime());
     assertEquals("Duque", newAppointment.getPatient().getName());
     assertEquals(false, newAppointment.isEmergency());
-    assertEquals("lele pancha", newAppointment.getReason());
+    assertEquals("stomach ache", newAppointment.getReason());
     assertEquals(false, newAppointment.isPast());
-    assertEquals("Ibuprofeno", newAppointment.getTreatment());
+    assertEquals("ibuprofen", newAppointment.getTreatment());
   }
 
   @Test
@@ -115,9 +115,9 @@ assertEquals("Duque", appointmentId.get().getPatient().getName());
     assertEquals(LocalTime.of(12, 10), result.getTime());
     assertEquals("Koda", result.getPatient().getName());
     assertEquals(true, result.isEmergency());
-    assertEquals("caca explosiva", result.getReason());
+    assertEquals("loose poop", result.getReason());
     assertEquals(true, result.isPast());
-    assertEquals("Aspirina", result.getTreatment());
+    assertEquals("aspirin", result.getTreatment());
 
     verify(iAppointmentRepository, times(1)).save(result);
   }
