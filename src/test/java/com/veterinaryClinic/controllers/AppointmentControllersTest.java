@@ -21,7 +21,7 @@ import java.util.Optional;
 
 import static javax.swing.UIManager.get;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -133,5 +133,40 @@ public class AppointmentControllersTest {
                     "                        \"past\": true,\n" +
                     "                        \"treatment\": \"Aspirina\"}"));
 }
+
+  @Test
+  void deleteAppointment() throws Exception {
+    doNothing().when(appointmentServices).deleteAppointment(1);
+
+    mockMvc.perform(MockMvcRequestBuilders.delete("/api/vc/appointment/1"))
+            .andExpect(status().isOk());
+  }
+
+  @Test
+  void updateAppointment() throws Exception {
+    Appointment updatedAppointment = new Appointment();
+    updatedAppointment.setId(1);
+    updatedAppointment.setDate(LocalDate.of(2024, 10, 15));
+    updatedAppointment.setTime(LocalTime.of(18, 0));
+    updatedAppointment.setEmergency(true);
+    updatedAppointment.setReason("Cambio de razón");
+    updatedAppointment.setPast(true);
+    updatedAppointment.setTreatment("Paracetamol");
+
+    String updatedAppointmentJson = "{\"id\": 1,\n"
+            + "\"date\": \"15-10-2024\",\n"
+            + "\"time\": \"18:00\",\n"
+            + "\"emergency\": true,\n"
+            + "\"reason\": \"Cambio de razón\",\n"
+            + "\"past\": true,\n"
+            + "\"treatment\": \"Paracetamol\"}";
+
+    mockMvc.perform(MockMvcRequestBuilders.put("/api/vc/appointment/1")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(updatedAppointmentJson))
+            .andExpect(status().isOk());
+
+    verify(appointmentServices).updateAppointment(any(Appointment.class), any(Integer.class));
+  }
    }
 
