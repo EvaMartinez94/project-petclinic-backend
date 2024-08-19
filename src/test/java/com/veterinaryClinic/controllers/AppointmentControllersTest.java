@@ -16,6 +16,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
+import static javax.swing.UIManager.get;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -62,7 +63,11 @@ public class AppointmentControllersTest {
         appointmentKoda.setReason("caca explosiva");
         appointmentKoda.setPast(true);
         appointmentKoda.setTreatment("Aspirina");
+
+        appointmentList.add(appointmentDuque);
+        appointmentList.add(appointmentKoda);
     }
+
 
   @Test
   void createAppointment() throws Exception {
@@ -81,5 +86,14 @@ public class AppointmentControllersTest {
                 .json(
                     "{'id':'1',date': '10-10-2024', 'time': '19:30', 'patient': 'patient_id:02','emergency': false,'reason': 'lele pancha','past': false,'treatment': 'Ibuprofeno'}"));
        }
+
+@Test
+    void getAllAppointments() throws Exception{
+        when(appointmentServices.getAllAppointment()).thenReturn(appointmentList);
+
+        MockMvc.perform(get("/api/vc/appointment"))
+                .andExpect(status().isOk())
+                .andExpect(content().json())
+}
    }
 
