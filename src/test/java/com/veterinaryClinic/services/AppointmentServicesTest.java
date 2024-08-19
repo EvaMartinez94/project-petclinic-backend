@@ -19,8 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.*;
-
-
+import static org.mockito.ArgumentMatchers.any;
 
 public class AppointmentServicesTest {
 
@@ -101,5 +100,25 @@ assertEquals("Duque", appointmentId.get().getPatient().getName());
     appointmentServices.deleteAppointment(2);
 
     verify(iAppointmentRepository, times(1)).deleteById(2);
+  }
+
+  @Test
+  void test_if_updateAppointment_updates_the_object() {
+    when(iAppointmentRepository.save(any(Appointment.class))).thenReturn(appointmentKoda);
+
+    Appointment result = appointmentKoda;
+
+    appointmentServices.updateAppointment(result, 2);
+
+    assertEquals(2, result.getId());
+    assertEquals(LocalDate.of(2024, 04, 29), result.getDate());
+    assertEquals(LocalTime.of(12, 10), result.getTime());
+    assertEquals("Koda", result.getPatient().getName());
+    assertEquals(true, result.isEmergency());
+    assertEquals("caca explosiva", result.getReason());
+    assertEquals(true, result.isPast());
+    assertEquals("Aspirina", result.getTreatment());
+
+    verify(iAppointmentRepository, times(1)).save(result);
   }
 }
