@@ -18,6 +18,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 
 
@@ -91,5 +92,14 @@ public class AppointmentServicesTest {
 when(iAppointmentRepository.findById(0)).thenReturn(Optional.of(appointmentDuque));
 Optional<Appointment> appointmentId = appointmentServices.getAppointmentId(0);
 assertEquals("Duque", appointmentId.get().getPatient().getName());
+  }
+
+  @Test
+  void test_if_deleteAppointment_delete_the_object() {
+    when(iAppointmentRepository.findById(2)).thenReturn(Optional.of(appointmentKoda));
+
+    appointmentServices.deleteAppointment(2);
+
+    verify(iAppointmentRepository, times(1)).deleteById(2);
   }
 }
