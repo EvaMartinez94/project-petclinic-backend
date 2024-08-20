@@ -17,8 +17,8 @@ public class AppointmentServices {
     iAppointmentRepository.save(appointment);
   }
 
-  public Appointment createAppointment(Appointment newAppointment) {
-    return iAppointmentRepository.save(newAppointment);
+  public Appointment createAppointment(Appointment appointment) {
+    return iAppointmentRepository.save(appointment);
   }
 
   public ArrayList<Appointment> getAllAppointment() {

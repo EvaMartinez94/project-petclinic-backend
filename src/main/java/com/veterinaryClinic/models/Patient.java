@@ -28,12 +28,15 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "patient", indexes = {
-    @Index(name = "idx_patient_identificationNumber", columnList = "identificationNumber"),
-    @Index(name = "idx_patient_tutorName", columnList = "tutorName"),
-    @Index(name = "idx_patient_identification_tutor", columnList = "identificationNumber, tutorName")
-})
-
+@Table(
+    name = "patient",
+    indexes = {
+      @Index(name = "idx_patient_identificationNumber", columnList = "identificationNumber"),
+      @Index(name = "idx_patient_tutorName", columnList = "tutorName"),
+      @Index(
+          name = "idx_patient_identification_tutor",
+          columnList = "identificationNumber, tutorName")
+    })
 public class Patient {
 
     @Id
@@ -63,9 +66,11 @@ public class Patient {
     @Column(name = "tutorPhone", nullable = false)
     private String tutorPhone;
 
-    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    @JsonManagedReference
-    private List<Appointment> appointments = new ArrayList<>();
-
+  @OneToMany(
+      mappedBy = "patient",
+      cascade = CascadeType.ALL,
+      orphanRemoval = true,
+      fetch = FetchType.LAZY)
+  @JsonManagedReference
+  private List<Appointment> appointments = new ArrayList<>();
 }
-
