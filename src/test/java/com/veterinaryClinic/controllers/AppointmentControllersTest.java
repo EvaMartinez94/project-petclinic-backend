@@ -114,7 +114,7 @@ public class AppointmentControllersTest {
                         "        \"date\": \"29-04-2024\",\n" +
                         "        \"time\": \"12:10\",\n" +
                         "        \"emergency\": true,\n" +
-                        "        \"reason\": \"loose poopa\",\n" +
+                        "        \"reason\": \"loose poop\",\n" +
                         "        \"past\": true,\n" +
                         "        \"treatment\": \"aspirin\"}]"));
 }
