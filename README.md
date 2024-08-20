@@ -22,6 +22,6 @@ Función de Salir que sales de sesión, por lo que haria falta logarte de nuevo.
 
 
 ## The documentation ;) Resumen del trabajo realizado, en la parte Backend y la frontend.
-* [Documentación](https://www.canva.com/design/DAGNcs3qQ1c/BcWeUzfY-GYTvaGqNsdecQ/view?utm_content=DAGNcs3qQ1c&utm_campaign=designshare&utm_medium=link&utm_source=editor)
+* [Documentación](https://www.canva.com/design/DAGLY4YNzYk/LFH3L3C8Mhuk6vgx6jrEFg/view?utm_content=DAGLY4YNzYk&utm_campaign=designshare&utm_medium=link&utm_source=editor)
 
 
