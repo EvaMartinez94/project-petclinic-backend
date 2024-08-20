@@ -17,9 +17,14 @@ Ante la premura por las fechas de entrega y ante este contratiempo se decidio im
 Función de Salir que sales de sesión, por lo que haria falta logarte de nuevo.
 
 
-## tHE wEB iNTERFACE
-## ![key](/src/static/images/UI.png)
+## Mapeo BD.
+## ![key](10.jpg)
 
+## Entidades.
+## ![key](9.jpg)
+
+## TDD & Solid.
+## ![key](12.jpg)
 
 ## The documentation ;) Resumen del trabajo realizado, en la parte Backend y la frontend.
 * [Documentación](https://www.canva.com/design/DAGLY4YNzYk/LFH3L3C8Mhuk6vgx6jrEFg/view?utm_content=DAGLY4YNzYk&utm_campaign=designshare&utm_medium=link&utm_source=editor)
