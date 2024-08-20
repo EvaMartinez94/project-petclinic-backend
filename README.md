@@ -29,7 +29,7 @@ Exit function that leaves the session, so it would be necessary to log in again.
 
 
 ## The documentation ;) Summary of the work carried out, in the Backend and the frontend.
-* [Documentación](https://www.canva.com/design/DAGLY4YNzYk/LFH3L3C8Mhuk6vgx6jrEFg/view?utm_content=DAGLY4YNzYk&utm_campaign=designshare&utm_medium=link&utm_source=editor)
+## * [Documentación](https://www.canva.com/design/DAGLY4YNzYk/LFH3L3C8Mhuk6vgx6jrEFg/view?utm_content=DAGLY4YNzYk&utm_campaign=designshare&utm_medium=link&utm_source=editor)
 
 
 # Versión en Español:
