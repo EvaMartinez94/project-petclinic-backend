@@ -18,21 +18,21 @@ public class PatientServices {
 
   @Autowired IPatientRepository iPatientRepository;
 
-  public Patient createPatient(Patient newPatient){
+  public Patient cretePatient(Patient newPatient) {
     return iPatientRepository.save(newPatient);
 
   }
 
-  public List<Patient> getAllPatients(){
+  public List<Patient> getAllPatients() {
     return (List<Patient>) iPatientRepository.findAll();
- }
+  }
 
- public Optional<Patient> getPatientbyId(Long id){
+  public Optional<Patient> getPatientbyId(Long id) {
     Patient patient = iPatientRepository.findById(id).orElseThrow();
     return Optional.of(patient);
- }
+  }
 
- public List<Patient> getByTutorName(String tutorName){
+  public List<Patient> getByTutorName(String tutorName) {
     return (List<Patient>) iPatientRepository.findByTutorName(tutorName);
   }
   public List<Patient> getByIdentificationNumber(Long identificationNumber){

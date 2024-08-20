@@ -11,14 +11,17 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Optional;
+import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -26,9 +29,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 public class AppointmentControllersTest {
   @Mock private AppointmentServices appointmentServices;
+  @Mock private AppointmentServices appointmentServices;
 
   @InjectMocks private AppointmentControllers appointmentControllers;
+  @InjectMocks private AppointmentControllers appointmentControllers;
 
+  private MockMvc mockMvc;
   private MockMvc mockMvc;
 
   private Appointment appointmentDuque;
@@ -39,12 +45,29 @@ public class AppointmentControllersTest {
   public void setUp() {
     MockitoAnnotations.openMocks(this);
     mockMvc = MockMvcBuilders.standaloneSetup(appointmentControllers).build();
+  @BeforeEach
+  public void setUp() {
+    MockitoAnnotations.openMocks(this);
+    mockMvc = MockMvcBuilders.standaloneSetup(appointmentControllers).build();
 
     Patient patientDuque = new Patient();
     patientDuque.setName("Duque");
     Patient patientKoda = new Patient();
     patientKoda.setName("Koda");
+    Patient patientDuque = new Patient();
+    patientDuque.setName("Duque");
+    Patient patientKoda = new Patient();
+    patientKoda.setName("Koda");
 
+    appointmentDuque = new Appointment();
+    appointmentDuque.setId(1);
+    appointmentDuque.setDate(LocalDate.of(2024, 10, 10));
+    appointmentDuque.setTime(LocalTime.of(19, 30));
+    appointmentDuque.setPatient(patientDuque);
+    appointmentDuque.setEmergency(false);
+    appointmentDuque.setReason("stomach ache");
+    appointmentDuque.setPast(false);
+    appointmentDuque.setTreatment("ibuprofen");
     appointmentDuque = new Appointment();
     appointmentDuque.setId(1);
     appointmentDuque.setDate(LocalDate.of(2024, 10, 10));
