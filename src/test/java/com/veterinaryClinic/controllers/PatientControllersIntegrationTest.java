@@ -10,6 +10,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import static org.mockito.Mockito.when;
 import org.mockito.MockitoAnnotations;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
@@ -31,7 +32,7 @@ import jakarta.transaction.Transactional;
 @Transactional
 @AutoConfigureMockMvc
 class PatientControllersIntegrationTest {
-
+    @Autowired
     private MockMvc mockMvc;
 
     @Mock
@@ -58,7 +59,7 @@ class PatientControllersIntegrationTest {
         patient.setName("Fido");
         when(patientServices.getAllPatients()).thenReturn(Arrays.asList(patient));
 
-        mockMvc.perform(get("/api/vc"))
+        mockMvc.perform(get("/api/vc/patient"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].name").value("Fido"));
     }

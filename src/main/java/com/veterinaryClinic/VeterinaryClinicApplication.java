@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication(scanBasePackages = "com.veterinaryClinic")
 
+//@SpringBootApplication()
 public class VeterinaryClinicApplication {
 
 	public static void main(String[] args) {

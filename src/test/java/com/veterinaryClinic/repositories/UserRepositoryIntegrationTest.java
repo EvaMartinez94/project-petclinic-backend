@@ -1,6 +1,7 @@
 package com.veterinaryClinic.repositories;
 
 import java.util.Optional;
+import com.veterinaryClinic.models.User;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -11,7 +12,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.veterinaryClinic.models.User;
+
 
 @SpringBootTest
 @Transactional
