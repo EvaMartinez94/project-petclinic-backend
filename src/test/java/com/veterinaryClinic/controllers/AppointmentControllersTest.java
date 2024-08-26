@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -27,14 +28,12 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+@SpringBootTest
 public class AppointmentControllersTest {
   @Mock private AppointmentServices appointmentServices;
-  @Mock private AppointmentServices appointmentServices;
 
   @InjectMocks private AppointmentControllers appointmentControllers;
-  @InjectMocks private AppointmentControllers appointmentControllers;
 
-  private MockMvc mockMvc;
   private MockMvc mockMvc;
 
   private Appointment appointmentDuque;
@@ -45,15 +44,7 @@ public class AppointmentControllersTest {
   public void setUp() {
     MockitoAnnotations.openMocks(this);
     mockMvc = MockMvcBuilders.standaloneSetup(appointmentControllers).build();
-  @BeforeEach
-  public void setUp() {
-    MockitoAnnotations.openMocks(this);
-    mockMvc = MockMvcBuilders.standaloneSetup(appointmentControllers).build();
 
-    Patient patientDuque = new Patient();
-    patientDuque.setName("Duque");
-    Patient patientKoda = new Patient();
-    patientKoda.setName("Koda");
     Patient patientDuque = new Patient();
     patientDuque.setName("Duque");
     Patient patientKoda = new Patient();

@@ -39,7 +39,7 @@ class PatientServicesIntegrationTest {
         Patient newPatient = new Patient();
         when(iPatientRepository.save(newPatient)).thenReturn(newPatient);
 
-        Patient createdPatient = patientServices.createPatient(newPatient);
+        Patient createdPatient = patientServices.cretePatient(newPatient);
 
         assertNotNull(createdPatient);
         assertEquals(newPatient, createdPatient);
